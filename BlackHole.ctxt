@@ -1,0 +1,21 @@
+#BlueJ class context
+comment0.target=BlackHole
+comment0.text=\r\n\r\n\ Basit\ Balogun\r\n\ 10/05/2017\r\n\ A\ class\ for\ the\ blackhole\ that\ would\ be\ used\ in\ the\ SpaceTravel\ game\ \r\n
+comment1.params=angle\ game
+comment1.target=BlackHole(double,\ SpaceTravel)
+comment1.text=constructor\ to\ create\ the\ blackhole
+comment2.params=
+comment2.target=void\ run()
+comment2.text=the\ method\ which\ animates\ the\ blackhole
+comment3.params=
+comment3.target=double\ getHoleSize()
+comment3.text=return\ size
+comment4.params=
+comment4.target=double\ getAngle()
+comment4.text=return\ the\ current\ angle
+comment5.params=angle
+comment5.target=void\ setAngle(double)
+comment5.text=set\ the\ angle
+comment6.params=
+comment6.target=void\ oneTimeStep()
+numComments=7
