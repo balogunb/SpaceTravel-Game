@@ -47,7 +47,7 @@ public class SpaceTravel extends GraphicsProgram {
         GImage background = new GImage("background.jpg");
         background.setSize(1100,720);
         add(background,0,0);
-         starLimit = 700;
+        starLimit = 700;
         setBackground(Color.BLACK);
 
         while ( starLimit-- > 0)  {
@@ -143,13 +143,13 @@ public class SpaceTravel extends GraphicsProgram {
             lastPoint = point;
             push();
             while ( starLimit-- > 0)  {
-            GRect star = new GRect(rand.nextDouble(0,gameWidth),//random horizontal point
-                    rand.nextDouble(0,gameHeight),//random vertical point
-                    1,1);
-            star.setColor(rand.nextColor());
-            star.setFilled(true);
-            add(star);
-        }
+                GRect star = new GRect(rand.nextDouble(0,gameWidth),//random horizontal point
+                        rand.nextDouble(0,gameHeight),//random vertical point
+                        1,1);
+                star.setColor(rand.nextColor());
+                star.setFilled(true);
+                add(star);
+            }
         }
     }
 
@@ -225,29 +225,30 @@ public class SpaceTravel extends GraphicsProgram {
         //instant variable
         double holeSize = 320;//the diameter of a blackHole
 
+
         //calculates overlap 
-        double distanceIceFire = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
-                firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2);
-        double overlapIceFire = planetSize - distanceIceFire;
-        double distanceIceHole1 = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
-                blackHole1.getX(), blackHole1.getY());
-        double overlapIceHole1 = holeSize/2 + planetSize/2 - distanceIceHole1;
-        double distanceIceHole2 = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
-                blackHole2.getX(), blackHole2.getY());
-        double overlapIceHole2 = holeSize/2 + planetSize/2 - distanceIceHole2;
-        double distanceFireHole1 = GMath.distance(firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2,
-                blackHole1.getX(), blackHole1.getY());
-        double overlapFireHole1 = holeSize/2 + planetSize/2 - distanceFireHole1;
-        double distanceFireHole2 = GMath.distance(firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2,
-                blackHole2.getX(), blackHole2.getY());
-        double overlapFireHole2 = holeSize/2 + planetSize/2 - distanceFireHole2;
-        double distanceIronHole1 = GMath.distance(ironPlanet.getX()+planetSize/2, ironPlanet.getY()+planetSize/2,
-                blackHole1.getX(), blackHole1.getY());
-        double overlapIronHole1 = holeSize/2 + planetSize/2 - distanceIronHole1;
-        double distanceIronHole2 = GMath.distance(ironPlanet.getX()+planetSize/2, ironPlanet.getY()+planetSize/2,
-                blackHole2.getX(), blackHole2.getY());
-        double overlapIronHole2 = holeSize/2 + planetSize/2 - distanceIronHole2;
-        
+        // double distanceIceFire = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
+        // firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2);
+        // double overlapIceFire = planetSize - distanceIceFire;
+        // double distanceIceHole1 = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
+        // blackHole1.getX(), blackHole1.getY());
+        // double overlapIceHole1 = holeSize/2 + planetSize/2 - distanceIceHole1;
+        // double distanceIceHole2 = GMath.distance(icePlanet.getX()+planetSize/2, icePlanet.getY()+planetSize/2,
+        // blackHole2.getX(), blackHole2.getY());
+        // double overlapIceHole2 = holeSize/2 + planetSize/2 - distanceIceHole2;
+        // double distanceFireHole1 = GMath.distance(firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2,
+        // blackHole1.getX(), blackHole1.getY());
+        // double overlapFireHole1 = holeSize/2 + planetSize/2 - distanceFireHole1;
+        // double distanceFireHole2 = GMath.distance(firePlanet.getX()+planetSize/2, firePlanet.getY()+planetSize/2,
+        // blackHole2.getX(), blackHole2.getY());
+        // double overlapFireHole2 = holeSize/2 + planetSize/2 - distanceFireHole2;
+        // double distanceIronHole1 = GMath.distance(ironPlanet.getX()+planetSize/2, ironPlanet.getY()+planetSize/2,
+        // blackHole1.getX(), blackHole1.getY());
+        // double overlapIronHole1 = holeSize/2 + planetSize/2 - distanceIronHole1;
+        // double distanceIronHole2 = GMath.distance(ironPlanet.getX()+planetSize/2, ironPlanet.getY()+planetSize/2,
+        // blackHole2.getX(), blackHole2.getY());
+        // double overlapIronHole2 = holeSize/2 + planetSize/2 - distanceIronHole2;
+
         //if firePlanet overlaps destination set gameIsOver to true and labels "you won" and "start game" to visible
         if(firePlanet.getBounds().intersects(destination.getBounds())){
             gameIsOver = true;
@@ -256,62 +257,63 @@ public class SpaceTravel extends GraphicsProgram {
         }
 
         //if icePlanet overlaps firePlanet, set gameIsOver to true and label "startGame" to visible   
-        if(overlapIceFire > 0){
+        if(icePlanet.getBounds().intersects(firePlanet.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(icePlanet);
+            remove(icePlanet);       
         }
+
 
         //if icePlanet overlaps blackHole1, set gameIsOver to true and label "startGame" to visible
-        if(overlapIceHole1 > 0){
+        if(icePlanet.getBounds().intersects(blackHole1.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(icePlanet);
-
+            remove(icePlanet);       
         }
+
 
         //if icePlanet overlaps blackHole2, set gameIsOver to true and label "startGame" to 
-        if(overlapIceHole2 > 0){
+        if(icePlanet.getBounds().intersects(blackHole2.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(icePlanet);
-
+            remove(icePlanet);       
         }
 
+
         //if firePlanet overlaps blackHole1, set gameIsOver to true and label "startGame" to visible
-        if(overlapFireHole1 > 0){
+        if(firePlanet.getBounds().intersects(blackHole1.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(firePlanet);
-
+            remove(firePlanet);       
         }
 
         //if firePlanet overlaps blackHole2, set gameIsOver to true and label "startGame" to visible
-        if(overlapFireHole2 > 0){
+        if(firePlanet.getBounds().intersects(blackHole2.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(firePlanet);
-
+            remove(firePlanet);       
         }
+
+       
 
         //if ironPlanet overlaps blackHole1, set gameIsOver to true and label "startGame" to visible
-        if(overlapIronHole1 > 0){
+        if(ironPlanet.getBounds().intersects(blackHole1.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(ironPlanet);
-
+            remove(ironPlanet);       
         }
+
+        
+        
 
         //if ironPlanet overlaps blackHole2, set gameIsOver to true and label "startGame" to visible
-        if(overlapIronHole2 > 0){
+        if(ironPlanet.getBounds().intersects(blackHole2.getBounds())){
             gameIsOver = true;
             startGame.setVisible(true);
-            remove(ironPlanet);
-
+            remove(ironPlanet);       
         }
-        return gameIsOver;
 
+        return gameIsOver;
     }
-    
     
 }

@@ -40,6 +40,7 @@ public class BlackHole extends GCompound implements Runnable {
             size = size - 10;
             colorComp = colorComp + 10;
         }
+        
         //use GOval to draw the core of the blackhole
         GOval blackHoleCore = new GOval (coreSize,coreSize);
         blackHoleCore.setFillColor(Color.BLACK);
